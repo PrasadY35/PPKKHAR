@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, send_from_directory, redirect, url_for
+from flask import Flask, request, jsonify, send_from_directory, render_template
 import smtplib
 import random
 import os
 
-app = Flask(__name__, static_folder='')
+app = Flask(__name__)
 
 users = {}  # In-memory storage for user details
 otps = {}  # In-memory storage for OTPs
@@ -35,27 +35,27 @@ def generate_user_id(name, location):
 
 @app.route('/')
 def index():
-    return send_from_directory('', 'index.html')
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
-    return send_from_directory('', 'login.html')
+    return render_template('login.html')
 
 @app.route('/signup')
 def signup():
-    return send_from_directory('', 'signup.html')
+    return render_template('signup.html')
 
 @app.route('/payment')
 def payment():
-    return send_from_directory('', 'payment.html')
+    return render_template('payment.html')
 
 @app.route('/dashboard')
 def dashboard():
-    return send_from_directory('', 'dashboard.html')
+    return render_template('dashboard.html')
 
 @app.route('/admin')
 def admin():
-    return send_from_directory('', 'admin.html')
+    return render_template('admin.html')
 
 @app.route('/send-otp', methods=['POST'])
 def send_otp_route():

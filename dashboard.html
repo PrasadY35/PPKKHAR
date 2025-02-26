@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Prasad Prasanna Krishi Kendra</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 80%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+            color: #007bff;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome to Prasad Prasanna Krishi Kendra</h1>
+        <p>Your User ID: <span id="user-id"></span></p>
+        <div class="product-list">
+            <div class="product-card">
+                <img src="https://example.com/fertilizer1.jpg" alt="Fertilizer 1">
+                <h3>Fertilizer 1</h3>
+                <p>High-quality fertilizer for all your farming needs.</p>
+                <button onclick="buyProduct('Fertilizer 1')">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://example.com/fertilizer2.jpg" alt="Fertilizer 2">
+                <h3>Fertilizer 2</h3>
+                <p>Organic fertilizer for sustainable farming.</p>
+                <button onclick="buyProduct('Fertilizer 2')">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://example.com/fertilizer3.jpg" alt="Fertilizer 3">
+                <h3>Fertilizer 3</h3>
+                <p>Specialized fertilizer for specific crops.</p>
+                <button onclick="buyProduct('Fertilizer 3')">Buy Now</button>
+            </div>
+        </div>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Function to get the user ID from local storage and display it
+        function displayUserId() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                document.getElementById('user-id').innerText = userId;
+            } else {
+                window.location.href = 'login.html'; // Redirect to login if no user ID is found
+            }
+        }
+
+        // Function to handle logout
+        function logout() {
+            localStorage.removeItem('userId'); // Remove user ID from local storage
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+
+        // Function to handle product purchase
+        function buyProduct(productName) {
+            alert(`You have purchased ${productName}!`);
+        }
+
+        // Display the user ID when the page loads
+        window.onload = displayUserId;
+    </script>
+</body>
+</html>

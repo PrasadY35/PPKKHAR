@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasad Prasanna Krishi Kendra</title>
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth; /* This enables smooth scrolling */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #007bff; /* Blue header */
+            color: white;
+            padding: 10px 20px;
+            position: fixed; /* Fixed header */
+            width: 100%;
+            z-index: 1000;
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space between logo and links */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; /* Center logo vertically */
+        }
+
+        .logo img {
+            height: 50px; /* Logo height */
+            margin-right: 10px; /* Spacing between logo and business name */
+        }
+
+        nav a {
+            color: white; /* Navigation link color */
+            margin: 0 15px; /* Spacing between links */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold;
+        }
+
+        /* Main section styles */
+        .main-image {
+            background-image: url('https://media.assettype.com/TNIE%2Fimport%2F2018%2F12%2F5%2Foriginal%2FLinking.jpg?w=768&auto=format%2Ccompress&fit=max');
+            background-size: cover;
+            height: 600px; /* Height for the main image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+        }
+
+        .main-image h1 {
+            position: absolute;
+            z-index: 1; /* Ensure text is on top */
+            text-align: center; /* Center text */
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+        }
+
+        /* About Us styles */
+        .about-us {
+            padding: 60px 20px; /* Padding to space from header */
+            background-image: url("https://st2.depositphotos.com/3591429/10464/i/950/depositphotos_104648666-stock-photo-group-of-people-brainstorming-on.jpg");
+            color: red; /* Red text color */
+            text-align: center; /* Center align text */
+        }
+
+        /* Points in About Us */
+        .about-us p {
+            margin: 20px 0;
+            transition: transform 0.3s, background-color 0.3s; /* Transition for hover effect */
+            padding: 10px; /* Padding for text */
+            background-color: white; /* White background */
+            border-radius: 8px; /* Rounded corners */
+            display: inline-block; /* Inline block for hover effect */
+        }
+
+        .about-us p:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+            background-color: #f0f0f0; /* Light grey background on hover */
+        }
+
+        /* Services styles */
+        .services {
+            background-color: yellow;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        /* Service card styles */
+        .service-card {
+            background-color: white; /* White background for cards */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px;
+            margin: 10px;
+            display: inline-block; /* Inline block for horizontal alignment */
+            width: 200px; /* Width for cards */
+            position: relative; /* Position for hover effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for cards */
+            transition: transform 0.3s; /* Transition for scale effect */
+        }
+
+        .service-card:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .contact-us {
+             background-image: url("https://media.istockphoto.com/id/1416335096/photo/businessman-hand-holding-smart-phone-with-icon-mobile-phone-mail-telephone-and-address.jpg?s=612x612&w=0&k=20&c=ajOYHJPqlaKZ04BeSf5m3MsuZ_YGyxrUqEGMaS1hGGk=");
+             background-size: cover;
+             color: white;
+
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #007bff; /* Footer color */
+            color: white;
+            text-align: center; /* Center align footer text */
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/CY/AK/VN/63072326/uti-pan-maker-3--500x500.png" alt="Prasad Prasanna Krishi Kendra Logo">
+            <span>Prasad Prasanna Krishi Kendra</span>
+        </div>
+        <nav>
+            <a href="#about-us">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#contact-us">Contact Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </div>
+
+    <div class="main-image">
+        <h1>Your Trusted Fertilizer Shop</h1>
+    </div>
+
+    <div id="about-us" class="about-us">
+        <h2>About Us</h2>
+        <p>We provide high-quality fertilizers at affordable prices.</p>
+        <p>Email address: prasadprasannakrishikendra@gmail.com</p>
+        <p>Contact number: +91 9916909019 / +91 9060090385</p>
+        <p>Address: Haravi, Karnataka, Zilla: Vijayanagara, Taluq: Huvina Hadagali, near Pragati Krishna Gramina Bank, Haravi.</p>
+    </div>
+
+    <div id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <h3>Fertilizer Sales</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2659/2659980.png" alt="Fertilizer Icon" width="50">
+            <p>High-quality fertilizers for all your farming needs.</p>
+        </div>
+        <div class="service-card">
+            <h3>24x7 Support</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Support Icon" width="50">
+            <p>We're here to help you anytime!</p>
+        </div>
+        <div class="service-card">
+            <h3>Consultation</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfEMTUD2XJMn5Ag-ZDULuEfvLVrPA2ASBsw&s" alt="Consultation Icon" width="50">
+            <p>Expert advice for your farming practices.</p>
+        </div>
+    </div>
+
+    <div id="contact-us" class="contact-us">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out!</p>
+        <p>YOU CAN CONTACT US THROUGH</p>
+        <p>+91 9916909019 / +91 9060090385</p>
+        <p>OR</p>
+        <p>CONTACT US AT</p>
+        <p>prasadprasannakrishikendra@gmail.com</p>
+    </div>
+
+    <footer>
+        <p>All rights reserved by Prasad Prasanna Krishi Kendra</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg');
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff; /* Blue color */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .link {
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red; /* Red for error message */
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+        }
+
+        .success-message {
+            color: green; /* Green for success message */
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="button" onclick="sendOtp()">Send OTP</button>
+        </form>
+        <form id="otp-form" style="display: none;">
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+            <button type="button" onclick="verifyOtp()">Verify OTP</button>
+        </form>
+        <form id="details-form" style="display: none;">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="password" id="password" placeholder="Create Password" required>
+            <button type="button" onclick="submitDetails()">Submit</button>
+        </form>
+        <p class="error-message" id="error-message"></p>
+        <p class="success-message" id="success-message"></p>
+        <div class="link">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function sendOtp() {
+            const email = document.getElementById('email').value;
+
+            fetch('http://127.0.0.1:5001/send-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'OTP sent successfully') {
+                    document.getElementById('signup-form').style.display = 'none';
+                    document.getElementById('otp-form').style.display = 'block';
+                } else {
+                    document.getElementById('error-message').innerText = data.message;
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                document.getElementById('error-message').innerText = 'Error sending OTP';
+                document.getElementById('error-message').style.display = 'block';
+            });
+        }
+
+        function verifyOtp() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+
+            fetch('http://127.0.0.1:5001/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, otp })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'OTP verified successfully') {
+                    document.getElementById('otp-form').style.display = 'none';
+                    document.getElementById('details-form').style.display = 'block';
+                } else {
+                    document.getElementById('error-message').innerText = data.message;
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                document.getElementById('error-message').innerText = 'Error verifying OTP';
+                document.getElementById('error-message').style.display = 'block';
+            });
+        }
+
+        function submitDetails() {
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const location = document.getElementById('location').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://127.0.0.1:5001/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, name, location, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'User registered successfully') {
+                    document.getElementById('details-form').style.display = 'none';
+                    document.getElementById('success-message').innerText = `User ID: ${data.userId}`;
+                    document.getElementById('success-message').style.display = 'block';
+                } else {
+                    document.getElementById('error-message').innerText = data.message;
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                document.getElementById('error-message').innerText = 'Error registering user';
+                document.getElementById('error-message').style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
